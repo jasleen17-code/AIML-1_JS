@@ -1,159 +1,55 @@
-console.log("Hello World!");
- var num = 10;
-console.log(num);
- console.log(typeof num);
-var num = "Hello World!";
- console.log(num);
- console.log(typeof num); 
-num = false;
- console.log(num);
- console.log(typeof num);
- num = null;
-console.log(num);
- console.log(typeof num);
- num = undefined;
- console.log(num);
-console.log(typeof num)
- /**********Data Types in JavaScript**********/
- const sym1 = Symbol(4);
-console.log(sym1);
-const sym2 = Symbol(4);
-console.log(sym2);
-if(sym1 === sym2){
-    console.log("True");
+let employees = [];
+function addEmployee(){
+    let name=document.getElementById("name").value;
+    let id=document.getElementById("id").value;
+    let salary=parseInt(document.getElementById("salary").value);
+    let dept=document.getElementById("dept").value;
+    let emp={
+        name:name,
+        id:id,
+        salary:salary,
+        department:dept
+    };
+    employees.push(emp);
+    alert("Employee Added");
 }
-else{    console.log("False");
-}
- /**********Objects in JavaScript**********/ 
- /*var a = 100; var b = 200; var c = 300; var linebreak ="<br>";
-document.write("a+b+c=");
-result =a+b+c;
-document.write(result);
-document.write(linebreak);
-document.write("a*b*c=");
-result =a*b*c;
-document.write(result);     
-document.write(linebreak);
-document.write("a/b/c=");
-result =a/b/c;  
-document.write(result);
-document.write(linebreak);
-document.write("a%b%c=");
-result =a%b%c;  
-document.write(result); 
-document.write(linebreak);
-/**********Airthmatic operators in JavaScript**********/
-/*var a=10; var b=20; linebreak = "<br>";
-document.write("(a==b) = ");
-result = (a==b);
-document.write(result);
-document.write(linebreak);
-document.write("(a!=b) = ");
-result = (a!=b);
-document.write(result);     
-document.write(linebreak);
-document.write("(a>b) = ");
-result = (a>b);  
-document.write(result);
-document.write(linebreak);
-document.write("(a<b) = ");
-result = (a<b);         
-document.write(result); 
-document.write(linebreak);
-document.write("(a>=b) = ");
-result = (a>=b);
-document.write(result);
-document.write(linebreak);
-document.write("(a<=b) = ");
-result = (a<=b);  
-document.write(result);
-document.write(linebreak);
-/**********Relational operators in JavaScript**********/
-/*var count;
-document.write("Starting loop" +"<br>");
-for(count=1; count<=10; count++){
-    document.write("Current count = " + count + "<br>");
-}
-document.write("Loop ended");
-/**********Loops in JavaScript**********/
-/*const person ={
-    fname : "Omika",
-    lname : "Kumar",
-    age : 18,
-}
-for (let x in person){
-    console.log("Person's details  " + x + " is " + person[x]);
-}*/
-/**********For in loop in JavaScript**********/
-/*var count = 0;
-document.write("Starting loop" +"<br>");
-while(count<10){
-    document.write("Current count = " + count + "<br>");
-    count++;
-}
-document.write("Loop ended");*/
-/**********While loop in JavaScript**********/
-/*var age =2;
-if(age>=18){
-    document.write("You are eligible to vote");
-}
-else{
-    document.write("You are minorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-}*/
-/**********If else statement in JavaScript**********/
-/*var grade ='A';
-document.write("Entering switch block <br/>");
-switch(grade){
-    case 'A':
-        document.write("SLAY");
-        break;
-    case 'B':
-        document.write("pretty gooood");
-        break;      
-    case 'C':
-        document.write("not bad");
-        break;  
-    case 'D':   
-        document.write("could be better");
-        break;  
-        default:
-        document.write("unknown grade");
-        }
-        document.write("<br/>Exiting switch block");    */        
-/**********Switch case statement in JavaScript**********/
-/*function myFunction(){
-    alert("HELLO WORLD HEHE");
-}
-function sayHello(name ,age){
-    document.write("Hello " + name + ", you are " + age + " years old.");
-}
-var res = mul(12,30);
-function mul(x,y){
-    return x*y;
-}
-document.write("The product of 12 and 30 is: " + res);*/
-/**********Functions in JavaScript**********/ 
-/*var add2 = (a,b) => {
-    console.log(a+b);
-}
-add2(10,20);*/
-/**********Arrow functions in JavaScript**********/
-/*var person = {
-    name : "Omika Kumar",
-    age : 18,
-    isMarried : false,                                                // static object
-    address :{
-        street : "123 Main St",
-        flatNo : "6B",
+function displayEmployees(){
+    let output="";
+    for(let emp of employees){
+        output+=emp.name+" | "+emp.id+" | "+emp.salary+" | "+emp.department+"<br>";
     }
+    document.getElementById("result").innerHTML=output;
 }
-console.log(person["address"] , person["isMarried"]);*/
-/*var person2 = new Object();
-person2.name = "Omika Kumar";
-person2.age = 18;   
-person2.isMarried = false;
-person2.address = {};
-person2.address.street = "123 Main St";
-person2["address"]["flatNo"] = "6B";
-console.log(person2);
-/**********Objects in JavaScript**********/
+function filterSalary(){
+    let filtered=employees.filter(e=>e.salary>50000);
+    let output="";
+    for(let emp of filtered){
+        output+=emp.name+" | "+emp.salary+"<br>";
+    }
+    document.getElementById("result").innerHTML=output;
+    }
+function totalSalary(){
+    let total=0;
+    for(let emp of employees){
+        total+=emp.salary;
+    }
+    document.getElementById("result").innerHTML="Total Salary = "+total;
+    }
+function averageSalary(){
+    let total=0;
+    for(let emp of employees){
+        total+=emp.salary;
+    }
+    let avg=total/employees.length;
+    document.getElementById("result").innerHTML="Average Salary = "+avg;
+    }
+function countDepartment(){
+    let dept=prompt("Enter Department Name");
+    let count=0;    
+    for(let emp of employees){
+        if(emp.department==dept){
+        count++;
+        }
+    }   
+    document.getElementById("result").innerHTML="Employees in "+dept+" = "+count;
+}
