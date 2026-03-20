@@ -1,0 +1,29 @@
+// JSON - javascript object notation
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h2>create object from JSON string </h2> 
+        <p id ="demo"> </p>
+        <script>
+            var text ='{"employees":[' +
+            '{"firstName" :"John","lastName":"Doe"},'+
+            '{"firstName" :"Anna","lastName":"Smith"},'+
+            '{"firstName" :"Peter","lastName":"Jxones"}]}';
+
+            obj = JSON.parse(text);
+            document.getElementById("demo").innerHTML=
+            obj.employees[1].firstName+ " "+obj.employees[1].lastName;
+
+            //3 higher order func - func passed as an argument 
+            // 1. map 
+            // 2. filter 
+            // 3. reduce
+    </script>
+
+</body>
+</html>
